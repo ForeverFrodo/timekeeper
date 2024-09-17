@@ -6,9 +6,9 @@ import json
 from datetime import datetime, timedelta
 import time
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-LOG_DIR = os.path.join(ROOT_DIR, "logs")
-HISTORY_DIR = os.path.join(ROOT_DIR, "history")
+DATA_DIR = '/home/is4s/.timekeeper'
+LOG_DIR = os.path.join(DATA_DIR, "logs")
+HISTORY_DIR = os.path.join(DATA_DIR, "history")
 
 
 def ensure_dirs():
