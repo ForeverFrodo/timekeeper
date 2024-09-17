@@ -42,7 +42,27 @@ def clock_in():
         target_duration = input(
             "Enter the duration you want to work today (in hours): "
         )
-        log["target_duration"] = float(target_duration)
+
+        try:
+            f = float(target_duration)
+        except:
+            if target_duration == "":
+                print(
+                    "\U0001F632 Please enter a goal, or press ctrl+c to cancel..."
+                )
+                clock_in()
+                return
+            print(
+                f"\U0001F631 Um... can't turn {target_duration} into a number..."
+            )
+            clock_in()
+            return
+        if f >= 20:
+            print(f"\U0001F630 {f} seems a bit unreasonable, don't you think?")
+            clock_in()
+            return
+
+        log["target_duration"] = f
 
     save_log(log)
     print(f"⏰ Clocked in at {now.strftime('%H:%M:%S')}")
